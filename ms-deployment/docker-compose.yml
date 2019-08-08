@@ -1,0 +1,65 @@
+version: '3.5'
+#configs:
+# ms-api-config:
+#    file: /opt/clikenv/ekyc/clik.env
+# haproxy-dev:
+#    file: /opt/clikenv/ekyc/clik-test.pem
+# cert-file:
+#    file: /opt/clikenv/ekyc/clicert.pfx
+# welcome-page:
+#    file: /opt/clikenv/ekyc/index.http
+services:
+
+            
+  service-app1:
+    image: oudamdevops/app1:latest
+    ports:
+      - 6001:8080
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+
+  service-app2:
+    image: oudamdevops/app2:latest
+    ports:
+      - 6002:8080
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+
+  service-app3:
+    image: oudamdevops/app3:latest
+    ports:
+      - 6003:8080
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+
+
+  haproxy:
+    ports:
+      - "80:80"
+    image: oudamdevops/haproxy:latest
+    deploy:
+      mode: global
+      update_config:
+        parallelism: 1
+
