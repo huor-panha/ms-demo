@@ -16,8 +16,8 @@ services:
     ports:
       - 6001:8080
     deploy:
-      mode: replicated
-      replicas: 1
+      mode: global
+      # replicas: 1
       update_config:
         parallelism: 1
         order: start-first
@@ -30,8 +30,8 @@ services:
     ports:
       - 6002:8080
     deploy:
-      mode: replicated
-      replicas: 1
+      mode: global
+      #replicas: 1
       update_config:
         parallelism: 1
         order: start-first
@@ -44,8 +44,8 @@ services:
     ports:
       - 6003:8080
     deploy:
-      mode: replicated
-      replicas: 1
+      mode: global
+      #replicas: 1
       update_config:
         parallelism: 1
         order: start-first
