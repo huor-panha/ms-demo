@@ -9,15 +9,14 @@ version: '3.5'
 # welcome-page:
 #    file: /opt/clikenv/ekyc/index.http
 services:
-
-            
-  service-app1:
-    image: oudamdevops/app1:latest
+        
+  app1:
+    image: oudamdevops/app1:2.0.0
     ports:
       - 6001:8080
     deploy:
       mode: global
-      # replicas: 1
+       #replicas: 2
       update_config:
         parallelism: 1
         order: start-first
@@ -25,8 +24,8 @@ services:
       restart_policy:
         condition: on-failure
 
-  service-app2:
-    image: oudamdevops/app2:latest
+  app2:
+    image: oudamdevops/app2:2.0.0
     ports:
       - 6002:8080
     deploy:
@@ -39,8 +38,8 @@ services:
       restart_policy:
         condition: on-failure
 
-  service-app3:
-    image: oudamdevops/app3:latest
+  app3:
+    image: oudamdevops/app3:2.0.0
     ports:
       - 6003:8080
     deploy:
@@ -53,11 +52,10 @@ services:
       restart_policy:
         condition: on-failure
 
-
   haproxy:
     ports:
       - "80:80"
-    image: oudamdevops/haproxy:latest
+    image: oudamdevops/haproxy:2.0.0
     deploy:
       mode: global
       update_config:
