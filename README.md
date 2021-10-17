@@ -1,4 +1,4 @@
-- Front haproxy Group 01
+- Front haproxy Group 012
 1. # apt update
 2. # apt install haproxy
 3. Copy haproxy.cfg to /etc/haproxy and modify your backend server
